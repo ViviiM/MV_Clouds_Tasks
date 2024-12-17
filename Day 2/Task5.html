@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 5</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <form id = "dataform">
+      <div>
+        <label for="">Username: </label>
+        <input type="text" id="username" name="username" required /><br />
+
+      </div>
+        <div><label for="password">Password: </label>
+            <input type="password" id="password" name="password" required /><br />
+    </div>
+       <div> <label>Gender: </label>
+        <input type="radio" name="gender" id="male" value="Male" />
+        <label for="male">Male</label>
+        <input type="radio" name="gender" id="female" value="Female" />
+        <label for="female">Female</label><br />
+</div>
+
+       <div> <label for="dropdown">Dropdown Menu: </label>
+        <select id="dropdown" name="dropdown">
+            <option value="">Select an option</option>
+            <option value="sing">Sing</option>
+            <option value="read">Read</option>
+
+
+        </select></div><br />
+
+        <input type="submit" value="Submit" id='submitData' />
+    </form>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDNdkRKm-3Zg56i4XdeJEsfAn8KPMu3gOY",
+            authDomain: "fir-c848c.firebaseapp.com",
+            projectId: "fir-c848c",
+            storageBucket: "fir-c848c.firebasestorage.app",
+            messagingSenderId: "756246961933",
+            appId: "1:756246961933:web:27ec36b30a4db69fc45a44",
+            measurementId: "G-K9CJMTC5YC"
+        };
+    
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        //Initialise Cloud Firestore and get reference
+        const db = firebase.firestore();
+        // const db = getFirestore(app);
+        document.getElementById('dataform').addEventListener('submit' , async function (e){
+            e.preventDefault()
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+    
+            var gen = document.getElementsByName('gender');
+            for (let i = 0; i < gen.length; i++) {
+                if (gen[i].checked) {
+                    gen = gen[i].value
+                }
+            }
+            var selectElement =
+                document.querySelector('#dropdown');
+            var hobby = selectElement.value;
+    
+            var details = {
+                Username: username,
+                Password: password,
+                Gender: gen,
+                Hobby: hobby
+            }
+            console.log(details)
+            try {
+                // await addDoc(collection(db, "users"), details);
+                await db.collection('users').add(details)
+            alert('Data added successfully!');
+          } catch (error) {
+            console.error("Error adding document: ", error);
+          }
+    
+        })
+        // async function login(e) {
+           
+        // }
+    
+    
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+body {
+    font-size: 16px;
+    background-color: white;
+
+}
+fieldset{
+    height: 300px;
+    width: 200px;
+    margin-left: 500px;
+    background-color: antiquewhite;
+}
+div{
+    padding: 20px;
+}
+form{
+    padding: 20px;
+}
+input[type = 'submit']{
+    margin-left: 70px;
+}

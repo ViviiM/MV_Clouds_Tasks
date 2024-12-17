@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyframe Animations</title>
+    <style>
+        .main{
+            display: flex;
+            margin-top: 200px;
+        }
+        .animated-box {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            margin: 50px auto;
+            position: relative;
+            color: white;
+        }
+    
+
+        @keyframes bounceUp {
+            0%, 20%, 50%, 80%{
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-200px);
+            }
+            60% {
+                transform: translateY(-100px);
+            }
+        }
+
+        /* Rotate Animation */
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+                background-color: blueviolet;
+            }
+        }
+
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            0%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
+
+        .bounce {
+            animation: bounceUp 2s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+            border-radius: 50%;
+        }
+
+        .rotate {
+            animation: rotate 2s infinite;
+        }
+
+        .fade {
+            animation: fadeIn 3s infinite;
+        }
+
+        @keyframes wave {
+            0%, 75% ,100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-1500px);
+            }
+            50%{
+                transform: translateX(150px);
+
+            }
+        }
+
+        .wave {
+            animation: wave 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+   <div class="main">
+    <div class="animated-box bounce"></div>
+    <div class="animated-box rotate">Rotate</div>
+    <div class="animated-box fade">Fade</div>
+    <div class="animated-box wave">Wave</div>
+   </div>
+</body>
+</html>
