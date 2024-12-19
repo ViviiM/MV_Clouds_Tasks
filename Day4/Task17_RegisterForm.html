@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Register Page</h1>
+    <form action="Task17_ConfirmPage.html" onsubmit="return handleFormSubmit()">
+        <div>
+            <div class="placeholder">Your Name*</div>   
+            <input type="text" name="username" id="name" required >
+        </div>
+        <div>
+            <div class="placeholder" >Email id*</div>
+            <input type="email" name="emailid" id="emailid" autofocus required>
+        </div>
+        <div>
+            <div class="placeholder" >Password*</div>
+            <input type="password" name="pass" id="pass" required>
+        </div>
+        <div>
+            <div class="placeholder" >Confirm Password*</div>
+            <input type="password" name="cnfpass" id="cnfpass" required>
+        </div>
+        <div>
+            <input type="submit" value="Register">
+        </div>
+        <div>
+            <a href="Task17_LoginForm.html">Already have Account ?</a>
+        </div>
+        <script>
+            async function handleFormSubmit() {
+                let username = document.getElementById('name').value;
+                let emailid = document.getElementById('emailid').value;
+                let password = document.getElementById('pass').value;
+                let cnfpass = document.getElementById('cnfpass').value;
+
+                if (password !== cnfpass) {
+                    alert("Both Passwords do not match");
+                    return false;
+                }
+
+                // Store details in localStorage
+                window.localStorage.setItem("currentDetails", JSON.stringify({ name: username, email: emailid }));
+
+                // Redirect to confirmation page
+                window.location.href = `Task17_ConfirmPage.html?username=${encodeURIComponent(username)}&emailid=${encodeURIComponent(emailid)}`;
+                return false;
+            }
+        </script>
+    </form>
+</body>
+</html>

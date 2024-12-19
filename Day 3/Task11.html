@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var sumofnumbers = 0;
+        function sum(numbers){
+            let numberarr = numbers.split(" ")
+            for(let i in numberarr ){
+                sumofnumbers += Number(numberarr[i])
+            }
+            console.log(sumofnumbers)
+            let product = sumofnumbers;
+            while (product >= 10) {
+                product = product.toString().split("").reduce((acc, digit) => {
+                    return acc * Number(digit);
+                }, 1);
+            }
+            alert(product)
+        }
+        sum(prompt("Enter numbers separate with space :"));
+    </script>
+</body>
+</html>

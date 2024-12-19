@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let hrs = new Date().getHours()
+        let mins = new Date().getMinutes()
+        // let hrs = 13
+        // let mins = 15
+        console.log(hrs , mins)
+        if(hrs >= 13 && mins < 60){
+            console.log("Lunch time over" , `Hours ${hrs-13}`,`and ${mins} delayed`)
+        }else{
+            console.log("Hours",Math.abs(hrs - 13)  ,"Minutes",60 - mins , "Remaining")
+        }
+
+    </script>
+</body>
+</html>

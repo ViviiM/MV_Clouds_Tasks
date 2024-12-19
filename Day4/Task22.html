@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function findFirstRecurringCharacter(word) {
+            function helper(index, seen) {
+                if (index >= word.length) return null;
+                const char = word[index];
+                if (seen[char] !== undefined) {
+                    return { [char]: [seen[char], index] };
+                }
+                seen[char] = index;
+                return helper(index + 1, seen);
+            }
+            return helper(0, {});
+        }
+
+        // Example usage:
+        const word1 = "BTEJHBERSD";
+        const word2 = "JPDETRETXD";
+
+        console.log(findFirstRecurringCharacter(word1)); // ➞ { "E": [2, 6] }
+        console.log(findFirstRecurringCharacter(word2)); // ➞ { "E": [3, 6] }
+    </script>
+</body>
+
+</html>

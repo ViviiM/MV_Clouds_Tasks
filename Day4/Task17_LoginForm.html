@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Login Page</h1>
+    <form action= "Task17_Welcome.html" method="get" class="login" onsubmit="return handleFormSubmit()">
+
+        <div>
+            <div class="placeholder">Email id</div>
+            <input type="email" name="emailid" id="emailid" required>
+        </div>
+        <div>
+            <div class="placeholder">Password</div>
+            <input type="password" name="pass" id="pass" required>
+        </div>
+
+        <div>
+            <input type="submit" value="Login">
+        </div>
+
+
+    </form>
+    <script>
+
+        async function handleFormSubmit() {
+            let data = [{
+                email : "test@gmail.com",
+                pass : "1234"
+            }]
+            let emailid = document.getElementById('emailid').value;
+            let password = document.getElementById('pass').value;
+            console.log(emailid , password , data)
+            // let storedDetails = JSON.parse(window.localStorage.getItem("currentDetails"));
+
+            // if (storedDetails && storedDetails.email === emailid) {
+            if(emailid == data[0].email && password == data[0].pass){
+                window.localStorage.setItem('currentDetails' , JSON.stringify({name : "Vivek" , email : data[0].email}))
+                window.location.href = "Task17_Welcome.html";
+            } else {
+                alert("Invalid login credentials");
+            }
+            return false;
+        }
+
+    </script>
+</body>
+
+</html>

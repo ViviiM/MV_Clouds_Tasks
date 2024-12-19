@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation</title>
+    <style>
+        h1{
+            text-align: center;
+            &::after{
+                content: "Details!";
+                color:brown;
+            }
+        }
+        .container{
+            background-color: antiquewhite;
+            height: 200px;
+            width: 400px;
+            font-weight: bold;
+            font-size: 24px;
+            display: inline-block;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px wheat;
+            padding-left: 20px;
+            position: absolute;
+            left: 35%;
+            }
+    </style>
+</head>
+<body>
+    <h1>Confirm </h1>
+    <div class="container">
+        <p id="Details"> </p>
+        <button class="Confirm" onclick="goto()">Confirm</button>
+        <button class="edit" onclick="window.history.back()">Edit Details</button>
+    </div>
+    <script>
+        async function fetchDetails() {
+            let params = new URLSearchParams(window.location.search);
+            let username = params.get('username');
+            let emailid = params.get('emailid');
+
+            document.getElementById('Details').innerText = `Hello, ${username}!\n\nYour email is ${emailid}.`;
+        }
+
+        fetchDetails();
+
+        function goto() {
+            window.location = "Task17_Welcome.html";
+        }
+    </script>
+</body>
+</html>

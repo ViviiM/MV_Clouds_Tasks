@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let str = prompt("Enter a number : ")
+
+        let arr = str.split("")
+        console.log(isNaN(Number(arr)))
+        if (isNaN(Number(arr))) { alert("Enter numbers : ") }
+        console.log(arr)
+        let newarr = []
+        for (let i = 0; i < arr.length; i++) {
+            if (Number(arr[i + 1]) - Number(arr[i]) > 1 || Number(arr[i + 1]) == Number(arr[i]) || Number(arr[i + 1]) - Number(arr[i]) < 0) {
+                newarr.push(arr[i])
+                newarr.push(",");
+            } else {
+                newarr.push(arr[i])
+            }
+        }
+        console.log(newarr.join(""))
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let str = prompt("Enter a string :")
+        let newstr = []
+        for (let i in str) {
+            let a = str.charCodeAt(i);
+            if (a % 2 == 0) {
+                newstr.push(str.charAt(i).toUpperCase())
+            }else{
+                newstr.push(str.charAt(i).toLowerCase())
+            }
+        }
+        console.log(newstr.join(""))
+    </script>
+</body>
+
+</html>

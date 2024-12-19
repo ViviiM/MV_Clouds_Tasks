@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 18</title>
+    <style>
+        .container{
+            height: 200px;
+            width: 300px;
+            background-color: blanchedalmond;
+            display: flex;
+            position: absolute;
+            /* top: 25%; */
+            left: 30%;
+            box-shadow: 0 0 10px wheat;
+            justify-content: center;
+            align-items: center;
+        }
+        .total{
+            display: block;
+        }
+        .difference{
+            height: 100px;
+            width: 200px;
+            background-color: antiquewhite;
+            position: absolute;
+            top: 30%;
+            left: 33%;
+            box-shadow: 0 0 10px wheat;
+            padding: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <input type="date" name="currdate" id="currdate" value="2024-12-19" onclick="this.min = new Date().toISOString().split('T')[0]">
+        <button onclick="fun()">Get</button>
+       
+    </div>
+    <div class="difference">
+        <div id="year"></div>
+        <div id="months"></div>
+        <div id="days"></div>
+        <div id="hours"></div>
+        <div id="minutes"></div>
+        <div id="seconds"></div>
+    </div>
+    <script>
+        function fun() {
+            let dateInput = document.getElementById('currdate').value;
+            let targetDate = new Date(dateInput);
+            
+            setInterval(() => {
+                let currentDate = new Date();
+                let difference = targetDate - currentDate;
+
+                let years = targetDate.getFullYear() - currentDate.getFullYear();
+                let months = targetDate.getMonth() - currentDate.getMonth();
+                let days = targetDate.getDate() - currentDate.getDate();
+                let hours = targetDate.getHours() - currentDate.getHours() - 5;
+                let minutes = targetDate.getMinutes() - currentDate.getMinutes() - 30;
+                let seconds = targetDate.getSeconds() - currentDate.getSeconds();
+
+                if (seconds < 0) {
+                    seconds += 60;
+                    minutes--;
+                }
+                if (minutes < 0) {
+                    minutes += 60;
+                    hours--;
+                }
+                if (hours < 0) {
+                    hours += 24;
+                    days--;
+                }
+                if (days < 0) {
+                    months--;
+                    days += new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+                }
+                if (months < 0) {
+                    months += 12;
+                    years--;
+                }
+
+                // Display the result
+                document.getElementById('year').innerText = `Years: ${years}`;
+                document.getElementById('months').innerText = `Months: ${months}`;
+                document.getElementById('days').innerText = `Days: ${days}`;
+                document.getElementById('hours').innerText = `Hours: ${hours}`;
+                document.getElementById('minutes').innerText = `Minutes: ${minutes}`;
+                document.getElementById('seconds').innerText = `Seconds: ${seconds}`;
+
+            }, 1000);
+        }
+    </script>
+
+    
+</body>
+</html>

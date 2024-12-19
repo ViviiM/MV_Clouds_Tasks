@@ -8,7 +8,52 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
+        #dataform {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.208);
+            background-color: #f9f9f9;
+        }
+
+        #dataform div {
+            margin-bottom: 10px;
+        }
+
+        #dataform label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        #dataform input[type="text"],
+        #dataform input[type="password"],
+        #dataform select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        #submitData {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #submitData:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 
@@ -21,8 +66,8 @@
       </div>
         <div><label for="password">Password: </label>
             <input type="password" id="password" name="password" required /><br />
-    </div>
-       <div> <label>Gender: </label>
+    </div><label>Gender: </label>
+       <div style="display: flex;"> 
         <input type="radio" name="gender" id="male" value="Male" />
         <label for="male">Male</label>
         <input type="radio" name="gender" id="female" value="Female" />

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        .container{
+            height: 500px;
+            width: 400px;
+            background-color: black;
+            padding: 20px;
+            box-shadow: 0px 0px 8px rgb(31, 31, 31) ;
+            border-radius: 20px;
+            position: absolute;
+            top: 20px;
+            left: 500px;
+        }
+        .screen{
+            background-color: rgb(66, 66, 66);
+            height: 30px;
+            width: 350px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 8px whitesmoke inset;
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            overflow: hidden;
+            text-align: right;
+        }
+        .buttons{
+            margin-top: 20px;
+            display: flex;
+            gap: 55px;
+            cursor: pointer;
+        }
+        .button:hover{
+            background-color: rgb(77, 76, 76);;
+        }
+        .button{
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background-color: rgb(66, 66, 66);
+            color: white;
+            box-shadow: 0px 0px 8px whitesmoke ;
+            padding: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .ac{
+            background-color: orange;
+        }
+        .ac:hover{
+            background-color: rgb(249, 200, 108);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="screen" id = "display">
+        </div>
+        <div class="buttons">
+            <div class="button ac" onclick="clearDisplay()">C</div>
+            <div class="button" onclick="deleteNumber()"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
+            <div class="button" onclick="chooseOperation('/')">÷</div>
+        </div>
+        <div class="buttons">
+            <div class="button" onclick="appendNumber('7')">7</div>
+            <div class="button" onclick="appendNumber('8')">8</div>
+            <div class="button" onclick="appendNumber('9')">9</div>
+            <div class="button" onclick="chooseOperation('*')">X</div>
+        </div>
+        <div class="buttons">
+            <div class="button" onclick="appendNumber('4')">4</div>
+            <div class="button" onclick="appendNumber('5')">5</div>
+            <div class="button" onclick="appendNumber('6')">6</div>
+            <div class="button" onclick="chooseOperation('-')">-</div>
+        </div>
+        <div class="buttons">
+            <div class="button" onclick="appendNumber('1')">1</div>
+            <div class="button" onclick="appendNumber('2')">2</div>
+            <div class="button" onclick="appendNumber('3')">3</div>
+            <div class="button" onclick="chooseOperation('+')">+</div>
+        </div>
+        <div class="buttons">
+            <div class="button" onclick="appendNumber('00')">00</div>
+            <div class="button" onclick="appendNumber('0')">0</div>
+            <div class="button" onclick="appendNumber('.')">.</div>
+            <div class="button ac" onclick="calculate()">=</div>
+        </div>
+
+    </div>
+    <script>
+        let num1 = '';
+        let num2 = '';
+        let result = undefined;
+
+        function clearDisplay() {
+            num1 = '';
+            num2 = '';
+            result = undefined;
+            updateDisplay();
+        }
+
+        function appendNumber(number) {
+            if (number === '.' && num1.includes('.')) return;
+            num1 = num1.toString() + number.toString();
+            updateDisplay();
+        }
+
+        function chooseOperation(op) {
+            if (num1 === '') return;
+            if (num2 !== '') {
+                calculate();
+            }
+            result = op;
+            num2 = num1;
+            num1 = '';
+        }
+
+        function calculate() {
+            let finalresult;
+            const prev = parseFloat(num2);
+            const current = parseFloat(num1);
+            if (isNaN(prev) || isNaN(current)) return;
+            switch (result) {
+                case '+':
+                    finalresult = prev + current;
+                    break;
+                case '-':
+                    finalresult = prev - current;
+                    break;
+                case '*':
+                    finalresult = prev * current;
+                    break;
+                case '/':
+                    finalresult = prev / current;
+                    break;
+                default:
+                    return;
+            }
+            num1 = finalresult;
+            result = undefined;
+            num2 = '';
+            updateDisplay();
+        }
+
+        function deleteNumber() {
+            num1 = num1.toString().slice(0, -1);
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            document.getElementById('display').innerText = num1 || '0';
+        }
+
+        clearDisplay();
+    </script>
+</body>
+</html>

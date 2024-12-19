@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+</head>
+<body>
+    <div id = "text"></div>
+    <script>
+        let str = prompt("Enter some text : ");
+        let removedspaces = str.padStart(str.length + 11," " + "something");
+        console.log(removedspaces);
+        document.getElementById('text').innerHTML = removedspaces;
+    </script>
+</body>
+</html>
