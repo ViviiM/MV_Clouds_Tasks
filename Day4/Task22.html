@@ -8,26 +8,43 @@
 </head>
 
 <body>
+    <input type="file" name="file" id="file" onchange="readFile(this)" />
     <script>
+        function readFile(input) {
+            let file = input.files[0];
+
+            let reader = new FileReader();
+
+            reader.readAsText(file);
+
+            reader.onload = function () {
+                console.log("Reading...")
+                console.log(reader.result);
+            };
+
+            reader.onerror = function () {
+                console.log(reader.error);
+            };
+
+        }
         function findFirstRecurringCharacter(word) {
-            function helper(index, seen) {
-                if (index >= word.length) return null;
-                const char = word[index];
-                if (seen[char] !== undefined) {
-                    return { [char]: [seen[char], index] };
+            let seen = new Map();
+            for (let i = 0; i < word.length; i++) {
+                let temp = word[i];
+                if (seen.has(temp)) {
+                    return { character: temp, startIndex: seen.get(temp), endIndex: i };
                 }
-                seen[char] = index;
-                return helper(index + 1, seen);
+                seen.set(temp, i);
             }
-            return helper(0, {});
+            return null; // Return null if no recurring character is found
         }
 
-        // Example usage:
         const word1 = "BTEJHBERSD";
         const word2 = "JPDETRETXD";
 
-        console.log(findFirstRecurringCharacter(word1)); // ➞ { "E": [2, 6] }
-        console.log(findFirstRecurringCharacter(word2)); // ➞ { "E": [3, 6] }
+        
+        console.log(findFirstRecurringCharacter(word1)); // Output: { character: 'B', startIndex: 0, endIndex: 5 }
+        console.log(findFirstRecurringCharacter(word2)); // Output: { character: 'E', startIndex: 3, endIndex: 6 }
     </script>
 </body>
 

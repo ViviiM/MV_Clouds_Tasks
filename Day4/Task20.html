@@ -13,7 +13,7 @@
 
         let arr = str.split("")
         console.log(isNaN(Number(arr)))
-        if (isNaN(Number(arr))) { alert("Enter numbers : ") }
+        if (!isNaN(Number(arr))) { alert("Enter numbers : ") }
         console.log(arr)
         let newarr = []
         for (let i = 0; i < arr.length; i++) {

@@ -10,9 +10,11 @@
     <script>
         'validation'
         let num = prompt("Enter some text : ");
+        let flag = isNaN(Number(num))
+        if(flag) alert("Enter Numbers")
         let lengthofnum = num.toString().length; 
         console.log(lengthofnum);
-        document.getElementById('text').innerHTML = "Digits in this number : " + lengthofnum;
+        document.getElementById('text').innerHTML = flag ? "Enter numbers" :"Digits in this number : " + lengthofnum; 
     </script>
 </body>
 </html>

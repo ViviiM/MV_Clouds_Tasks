@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+</head>
+<body>
+    <div class="footer">
+        <div class="footer-head">Ready to watch? Enter your email to create or restart your membership.</div>
+        <form action="" class="emailsignup" id="newform">
+            <input type="email" name="" id="" placeholder="Email Address">
+            <button type="submit">Get Started <i class="fa-solid fa-greater-than"></i> </button>
+        </form>
+        <script>
+            const email = localStorage.getItem('email');
+            const formbox = document.getElementById('newform');
+            if(email)
+                formbox.style.display = 'none';
+        </script>
+        <div class="footer-tel">Questions? Call <a href=""> 000-800-919-1743</a></div>
+        <div class="footer-links">
+            <div class="footer-items">
+                <a href="">FAQ</a>
+                <a href="">Investor Relations</a>
+                <a href="">Privacy</a>
+                <a href="">Speed Test</a>
+            </div>
+            <div class="footer-items"><a href="">Help Centre</a><a href="">Jobs</a><a href="">Cookie Preferences</a><a
+                    href="">Legal Notices</a></div>
+            <div class="footer-items"><a href="">Account</a><a href="">Ways to Watch</a><a href="">Corporate
+                    Information</a><a href="">
+                    Only on Netflix</a></div>
+            <div class="footer-items"><a href="">Media Centre</a><a href="">
+                    Terms of Use</a><a href="">
+                    Contact Us</a></div>
+        </div>
+    
+        <div class="footer-button">
+            <button>English</button>
+            <h4>Netflix India</h4>
+    
+        </div>
+    </div>
+   
+</body>
+</html>

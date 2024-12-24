@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="auth.js" defer></script>
+    <link rel="icon" href="./images/nficon2023.ico">
+
+</head>
+
+<body>
+    <div class="header">
+        <div id="navbar"></div>
+        <script>
+            $(function () {
+                $("#navbar").load("nav.html");
+            });
+        </script>
+        <div class="signup">
+            <h1>Sign In</h1>
+            <form>
+                <input type="email" name="" id="email" placeholder="Enter Email ">
+                <input type="password" name="" id="password" placeholder="Enter Password">
+                <input type="submit" value="Sign in" id="submit">
+            </form>
+            <a href="" class="forgot" id="forgot">Forgot Password? </a>
+            <div class="cbox">
+                <input type="checkbox" name="" id="">Remember me
+            </div>
+            <div class="cbox new">New to Netflix? <a href="index.html">Signup up now</a></div>
+            <p class="bot">This page is protected by Google reCAPTCHA to ensure you're not a bot.
+            <a>Learn more.</a>
+            </p>
+        </div>
+    </div>
+    <div id="f"></div>
+    <script>
+        $(function () {
+            $("#f").load("footer.html");
+        });
+    </script>
+
+
+</body>
+
+</html>

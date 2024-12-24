@@ -1,12 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="download-min.js"></script>
 </head>
+
 <body>
-    
-    <a href=""></a>
+    <input type="file" name="file" id="file" onchange="readFile(this)" accept=".csv">
+    <div class="imgshow"></div>
+    <script>
+        
+        let imgarr = []
+        function readFile(input) {
+            let file = input.files[0];
+
+            let reader = new FileReader();
+
+            reader.readAsText(file);
+
+            reader.onload = function () {
+                console.log("Reading...")
+                let result = reader.result;
+                imgarr = result.split('\n')
+                console.log(imgarr)
+                for(let i in imgarr){
+                    document.getElementsByClassName('imgshow')[0].innerHTML += `${ Number(i)+1} <img src='${imgarr[i]}' height = '100px' width = '100px'/>  <button data-imglink = "${imgarr[i]}"  onclick = "download(this.dataset.imglink)" >Download</button><br/> `;
+                }
+            };
+            reader.onerror = function () {
+                console.log(reader.error);
+            };
+        }
+
+    </script>
 </body>
+
 </html>

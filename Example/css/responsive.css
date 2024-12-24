@@ -1,0 +1,119 @@
+@media (orientation: portrait) {
+    .logo{
+        width: 100px;
+    }
+    .headercontent h1 {
+        font-size: 40px;
+        line-height: 50px;
+    }
+    .headercontent p{
+        font-size: 14px;
+    }
+    .emailsignup{
+        flex-direction: column;
+        background-color: transparent;
+        gap:10px;
+        & input{
+            padding: 10px 20px;
+            color: white;
+            background-color: transparent;
+            border: 1px solid white;
+            border-radius: 5px;
+        }
+        & button{
+            font-size: 15px;
+        }
+    }
+    .curve{
+        width: 100%;
+        left: 0;
+    }
+    .section{
+        padding: 40px 10px;
+        overflow: hidden;
+        & h2{
+            font-size: 18px;
+        }
+        & .buttons{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+    }
+    .slider-container{
+        margin: 0;
+    }
+    .slider{
+        height: 30vh;
+        gap: 1px;
+    }
+    .prev{
+        left: 1px;
+        padding-top: 50px;
+    }
+    .next{
+        padding-top: 50px;
+    }
+    .parent{
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        margin: 0px 5px 0px 5px;
+        width: 100%;
+    }
+    .footer{
+        overflow: hidden;
+    }
+    .gridhead{
+        margin: 10px;
+        font-size: 19px;
+    }
+    .plus{
+        right: 10px;
+    }
+    .accordian-container{
+        width: 100%;
+        margin: 50px 0 0 0;
+        & h2{
+            margin: 0;
+            font-size: 18px;
+            padding: 0;
+        }
+    }
+    .footer{
+        margin: 0;
+        height: 100%;
+        & .emailsignup{
+            margin: 10px;
+            width: 100%;
+            & input{
+                margin: 0;
+                width: 80%;
+            }
+            & button{
+                font-size: 15px;
+                border-radius: 5px;
+            }
+        }
+    }
+    .footer-links{
+        display: flex;
+        margin: 25px;
+        padding: 0;
+        gap: 0;
+        font-weight: bold;
+       flex-direction: column;
+    }
+    .footer-tel{
+        margin: 15px;
+        width: 70%;
+        padding: 0;
+    }
+    .footer-button{
+        & button{
+            width: 80%;
+        }
+        margin: 25px;
+        padding: 0;
+    }
+}

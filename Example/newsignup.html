@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="auth.js" type="module"></script>
+    <link rel="icon" href="./images/nficon2023.ico">
+
+</head>
+
+<body>
+    <div class="header">
+        <div id="navbar">
+        </div>
+        <script>
+            $(function () {
+                $("#navbar").load("nav.html");
+            });
+        </script>
+        <div class="signup">
+            <h1>Set Your Password</h1>
+            <form action="payment.html">
+                <input type="email" name="" id="newemail" placeholder="Enter Email" value="">
+                <script>
+                    var newemail = localStorage.getItem('newemail');
+                    console.log(newemail);
+                    if (newemail != "") {
+                        var setemail = document.getElementById('newemail');
+                        console.log(setemail);
+                        console.log(newemail);
+                        setemail.value = newemail;
+                        console.log(setemail);
+                    }
+                </script>
+                <input type="password" name="" id="newpassword" placeholder="Create New Password">
+                <input type="submit" value="Sign up" id="createnew" />
+            </form>
+
+            <p class="bot">This page is protected by Google reCAPTCHA to ensure you're not a bot.
+                <a>Learn more.</a>
+            </p>
+        </div>
+    </div>
+
+
+    <div id="f">
+    </div>
+    <script>
+        $(function () {
+            $("#f").load("footer.html");
+        });
+    </script>
+
+</body>
+
+</html>

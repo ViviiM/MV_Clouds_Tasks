@@ -1,17 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
         // let str = prompt("Enter string : ")
-        let str = "HNBccddD"
+        let str = "HanHNBccddD"
         // 'aAhH'
-        let s = str.split("").sort((a,b) => b-a).join("");
-        console.log()
+        // one small one capital letters 
+        let s = str.split("").sort((a, b) => b - a).join("");
+        let op = {}
+        for (let i in str) {
+            op[str[i].toLowerCase()] = str[i].toUpperCase()
+            // console.log(str[i])
+        }
+        for(let key in op)
+            console.log(`${key} : ${op[key]}`)
+        
+
+
+        //small letters first and then caps
+        let str2 = "HNBcdddsADD"
+        let arr = []
+        let arr2 = []
+        const isLowerCase = str => str === str.toLowerCase();
+        for (let i in str) {
+            if (isLowerCase(str2[i])) {
+                // console.log(str2[i])
+                arr.push(str2[i]);
+            }else{
+                arr2.push(str2[i])
+            }
+        }
+        arr.sort();
+        arr2.sort();
+        console.log("Small letters first",arr.concat(arr2).join(""))
     </script>
 </body>
+
 </html>

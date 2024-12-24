@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <nav>
+        <img src="./images/Netflix_Logo.png" alt="" class="logo" onclick="window.location.href = 'index.html'">
+        <div>
+            <button class="langbtn">English </button>
+            <div id="signined" onmouseover='mouseOverToggle()' onmouseout='mouseOutToggle()' >
+                <ul  id="newDropDown">
+                    <li><a href="">Details</a></li>
+                    <li><a href="" onclick="localStorage.clear()">Logout</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <script>
+            const signin = document.getElementById('signined');
+            const email = localStorage.getItem('email');
+            signin.innerHTML += email ? `<div class="initial" style="height: 40px;width: 40px; background-color: red;border-radius : 50%;padding:10px 15px;font-weight:bold;cursor:pointer" >${email.charAt(0).toUpperCase()}</div>` : `<button onclick="window.location.href = 'signup.html'">Signin</button>`
+            var dropDownContent = document.getElementById('newDropDown');
+            dropDownContent.style.display = 'none';
+            function mouseOverToggle() {
+                if(email){
+                    dropDownContent.style.display = "";
+                }
+            }
+            function mouseOutToggle() {
+                dropDownContent.style.display = "none";
+            }
+
+        </script>
+    </nav>
+</body>
+
+</html>
