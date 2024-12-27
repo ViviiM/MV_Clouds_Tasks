@@ -1,0 +1,43 @@
+.container{
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    box-shadow: 0 0 10px black;
+    display: flex;
+    overflow: hidden;
+}
+#circle{
+    background:linear-gradient(red , pink);
+    margin-left: 50px;
+    margin-top: 70px;
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50%;
+    box-shadow: 0 0 20px black;
+    position: relative;
+    transition: all 0.3s ease; 
+    cursor:move;
+}
+
+#circle2{
+    background:linear-gradient(blue , lightblue);
+    margin-left: 100px;
+    margin-top: 70px;
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50%;
+    box-shadow: 0 0 20px black;
+    /* position: relative; */
+}
+
+#circle3{
+    margin-left: 200px;
+    margin-top: 70px;
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50%;
+    box-shadow: 0 0 20px black;
+}
+.move{
+    cursor: pointer;
+}

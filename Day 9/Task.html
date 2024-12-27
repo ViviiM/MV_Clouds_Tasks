@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div id="newcircle"></div>
+        <div id="circle" draggable="true" ondragstart="handleDragStart(event ,this)" ondragend="handleDragEnd(this)">
+        </div>
+        <div id="circle2"  ondragenter="handleDragEnter(this)" ondragleave="handleDragLeave(this)"
+            ondragover="handleDragOver(event,this)" ondrop="handleDrop(event, this)"></div>
+
+        <div id="circle3" draggable="true"></div>
+    </div>
+    <script>
+        function handleDragStart(e, t) {
+            t.style.opacity = '0.4';
+            e.dataTransfer.setData("text", e.target.id)
+        }
+
+        function handleDragEnd(e) {
+            e.style.opacity = '1';
+
+        }
+        function handleDragOver(e, t) {
+            e.preventDefault();
+            t.style.border = "2px dotted black";
+            return false;
+        }
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+        function newcircle(e){
+            console.log()
+            let n = e.cloneNode();
+            n.style.background = getRandomColor();
+            n.style.opacity = 1;
+
+            console.log(n.outerHTML)
+            document.getElementById('newcircle').innerHTML = `${ n.outerHTML}`
+        }
+        function handleDrop(e, t) {
+            e.preventDefault();
+            var data = e.dataTransfer.getData("text");
+            var draggedElement = document.getElementById(data);
+            const changeColor = document.getElementById('circle3')
+            if (t.id === 'circle2') {
+                newcircle(draggedElement);
+                t.appendChild(draggedElement);
+                draggedElement.style.height = '8rem';
+                draggedElement.style.width = '8rem';
+                draggedElement.style.margin = '15px';
+                let i = 0.99
+
+                let set = setInterval(() => {
+                   
+                    let rcolor = getRandomColor();
+                    console.log(rcolor)
+                    console.log(i)
+                    draggedElement.style.transform = `scale(${i - 0.01})`
+                    document.getElementById('circle3').style.backgroundColor = rcolor;
+                    i = i - 0.01;
+
+                    if (i < 0) {clearInterval(set);draggedElement.style.display = 'none' }
+
+                }, 100);
+            }
+        }
+        function handleDragEnter(e) {
+            e.classList.add('over');
+        }
+
+        function handleDragLeave(e) {
+            e.classList.remove('over');
+        }
+
+    </script>
+</body>
+
+</html>

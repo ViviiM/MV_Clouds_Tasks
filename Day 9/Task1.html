@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draggable Circles</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+        body,
+        
+        html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+        }
+
+        .red {
+            background-color: red;
+            z-index: 10;
+        }
+
+        .blue {
+            background-color: blue;
+            left: 150px;
+            top: 150px;
+            z-index: 5;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="draggableCircle" class="circle red"></div>
+        <div id="targetCircle" class="circle blue"></div>
+    </div>
+    <script>
+
+
+        const draggableCircle = document.getElementById('draggableCircle');
+        const targetCircle = document.getElementById('targetCircle');
+
+        let offsetX, offsetY;
+
+        draggableCircle.addEventListener('mousedown', (e) => {
+            offsetX = e.clientX - draggableCircle.offsetLeft;
+            offsetY = e.clientY - draggableCircle.offsetTop;
+            document.addEventListener('mousemove', moveCircle);
+            document.addEventListener('mouseup', dropCircle);
+        });
+
+        function moveCircle(e) {
+            draggableCircle.style.left = `${e.clientX - offsetX}px`;
+            draggableCircle.style.top = `${e.clientY - offsetY}px`;
+        }
+
+        function dropCircle() {
+            const draggableRect = draggableCircle.getBoundingClientRect();
+            const targetRect = targetCircle.getBoundingClientRect();
+
+            if (draggableRect.left >= targetRect.left &&
+                draggableRect.top >= targetRect.top &&
+                draggableRect.right <= targetRect.right &&
+                draggableRect.bottom <= targetRect.bottom) {
+
+                // Adjust size and position
+                draggableCircle.style.width = `${draggableCircle.offsetWidth * 0.9}px`;
+                draggableCircle.style.height = `${draggableCircle.offsetHeight * 0.9}px`;
+                draggableCircle.style.left = `${targetRect.left + (targetRect.width - draggableCircle.offsetWidth) / 2}px`;
+                draggableCircle.style.top = `${targetRect.top + (targetRect.height - draggableCircle.offsetHeight) / 2}px`;
+
+                // Create a new circle
+                const newCircle = document.createElement('div');
+                newCircle.className = 'circle';
+                newCircle.style.backgroundColor = getRandomColor();
+                newCircle.style.width = '100px';
+                newCircle.style.height = '100px';
+                newCircle.style.zIndex = 10;
+                newCircle.style.position = 'absolute';
+                newCircle.style.left = '0px';
+                newCircle.style.top = '0px';
+                draggableCircle.appendChild(newCircle); // Nest within the draggableCircle
+
+                // Make the new circle draggable
+                newCircle.addEventListener('mousedown', (e) => {
+                    offsetX = e.clientX - newCircle.offsetLeft;
+                    offsetY = e.clientY - newCircle.offsetTop;
+                    document.addEventListener('mousemove', moveCircle);
+                    document.addEventListener('mouseup', dropCircle);
+                });
+
+                // Update draggableCircle to the new circle
+                draggableCircle = newCircle;
+            }
+
+            document.removeEventListener('mousemove', moveCircle);
+            document.removeEventListener('mouseup', dropCircle);
+        }
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+    </script>
+</body>
+
+</html>
