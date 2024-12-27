@@ -18,7 +18,7 @@
             <div id="signined" onmouseover='mouseOverToggle()' onmouseout='mouseOutToggle()' >
                 <ul  id="newDropDown">
                     <li><a href="">Details</a></li>
-                    <li><a href="" onclick="localStorage.clear()">Logout</a></li>
+                    <li><a href="" onclick="logout()">Logout</a></li>
                 </ul>
             </div>
 
@@ -33,12 +33,16 @@
             function mouseOverToggle() {
                 if(email){
                     dropDownContent.style.display = "";
+                    dropDownContent.style.margin = 0;
                 }
             }
             function mouseOutToggle() {
                 dropDownContent.style.display = "none";
             }
-
+            function logout(){
+                localStorage.clear()
+                window.location = 'index.html' 
+            }
         </script>
     </nav>
 </body>

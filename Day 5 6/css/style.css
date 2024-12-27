@@ -36,10 +36,10 @@ nav {
 #newDropDown {
     background-color:transparent;
     position: absolute;
-    top: 70px;
+    top: 60px;
+    right: 35px;    
     height: 20vh;
     width: 10vw;
-    /* border-radius: 10px; */
     list-style: none;
     padding: 20px 10px;
     display: flex;
